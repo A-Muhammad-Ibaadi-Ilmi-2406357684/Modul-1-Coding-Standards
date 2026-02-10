@@ -31,7 +31,7 @@ public class ProductController {
     public String createProductPost(
             @ModelAttribute Product product,
             Model model) {
-        service.create(product);
+        service.save(product);
         return "redirect:list";
     }
 
@@ -57,7 +57,7 @@ public class ProductController {
             @ModelAttribute Product product,
             Model model) {
         product.setProductId(id);
-        service.create(product);
+        service.save(product);
         return "redirect:/product/list";
     }
 

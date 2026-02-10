@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
-    public Product create(Product product){
+    public Product save(Product product){
         if (product.getProductId() == null) {
             // Create new product; randomly generate UUID
             product.setProductId(UUID.randomUUID().toString());
