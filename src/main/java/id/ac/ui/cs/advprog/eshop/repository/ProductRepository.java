@@ -45,4 +45,8 @@ public class ProductRepository {
         }
         throw new NoSuchElementException();
     }
+
+    public boolean deleteById(String id) {
+        return productData.removeIf(product -> product.getProductId().equals(id));
+    }
 }
