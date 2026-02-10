@@ -14,11 +14,21 @@ public class ProductRepository {
 
     public Product create(Product product){
         if (product.getProductId() == null) {
+            // Create new product; randomly generate UUID
             product.setProductId(UUID.randomUUID().toString());
+            productData.add(product);
         } else {
-            throw new IllegalArgumentException("Product id must be null");
+            // Update existing product
+            String newProductId = product.getProductId();
+            for (int i = 0; i < productData.size(); i++) {
+                Product existingProduct = productData.get(i);
+                String existingProductId = existingProduct.getProductId();
+                if (existingProductId.equals(newProductId)) {
+                    productData.set(i, product);
+                }
+            }
+            // TODO: Handle product ID not found case
         }
-        productData.add(product);
         return product;
     }
 
