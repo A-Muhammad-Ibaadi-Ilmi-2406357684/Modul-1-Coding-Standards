@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ProductRepository {
@@ -14,11 +15,21 @@ public class ProductRepository {
 
     public Product create(Product product){
         if (product.getProductId() == null) {
+            // Create new product; randomly generate UUID
             product.setProductId(UUID.randomUUID().toString());
+            productData.add(product);
         } else {
-            throw new IllegalArgumentException("Product id must be null");
+            // Update existing product
+            String newProductId = product.getProductId();
+            for (int i = 0; i < productData.size(); i++) {
+                Product existingProduct = productData.get(i);
+                String existingProductId = existingProduct.getProductId();
+                if (existingProductId.equals(newProductId)) {
+                    productData.set(i, product);
+                }
+            }
+            // TODO: Handle product ID not found case
         }
-        productData.add(product);
         return product;
     }
 
@@ -26,7 +37,16 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    public boolean deleteById(String id){
+    public Product findById(String id) {
+        for (Product product: productData) {
+            if (product.getProductId().equals(id)) {
+                return product;
+            }
+        }
+        throw new NoSuchElementException();
+    }
+
+    public boolean deleteById(String id) {
         return productData.removeIf(product -> product.getProductId().equals(id));
     }
 }
