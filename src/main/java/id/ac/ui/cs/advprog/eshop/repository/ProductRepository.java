@@ -6,12 +6,18 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
     public Product create(Product product){
+        if (product.getProductId() == null) {
+            product.setProductId(UUID.randomUUID().toString());
+        } else {
+            throw new IllegalArgumentException("Product id must be null");
+        }
         productData.add(product);
         return product;
     }
