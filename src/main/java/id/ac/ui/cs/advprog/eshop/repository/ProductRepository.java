@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
+import java.util.NoSuchElementException;
 
 @Repository
 public class ProductRepository {
@@ -34,5 +35,14 @@ public class ProductRepository {
 
     public Iterator<Product> findAll() {
         return productData.iterator();
+    }
+
+    public Product findById(String id) {
+        for (Product product: productData) {
+            if (product.getProductId().equals(id)) {
+                return product;
+            }
+        }
+        throw new NoSuchElementException();
     }
 }
