@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 
 import java.util.List;
@@ -39,5 +40,13 @@ public class ProductController {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
         return "productList";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProductPost(
+            @PathVariable("id") String productId,
+            Model model) {
+        service.deleteById(productId);
+        return "redirect:/product/list";
     }
 }
