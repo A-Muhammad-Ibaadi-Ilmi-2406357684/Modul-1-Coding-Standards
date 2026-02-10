@@ -43,6 +43,6 @@ public class ProductController {
             @PathVariable("id") String productId,
             Model model) {
         service.deleteById(productId);
-        return "redirect:list";
+        return "redirect:/product/list";
     }
 }
