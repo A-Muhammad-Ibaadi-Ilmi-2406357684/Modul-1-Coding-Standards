@@ -13,6 +13,8 @@ import java.util.NoSuchElementException;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
+    public ProductRepository() {}
+
     public Product save(Product product){
         if (product.getProductId() == null) {
             // Create new product; randomly generate UUID
@@ -37,16 +39,16 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    public Product findById(String id) {
+    public Product findById(String productId) {
         for (Product product: productData) {
-            if (product.getProductId().equals(id)) {
+            if (product.getProductId().equals(productId)) {
                 return product;
             }
         }
         throw new NoSuchElementException();
     }
 
-    public boolean deleteById(String id) {
-        return productData.removeIf(product -> product.getProductId().equals(id));
+    public boolean deleteById(String productId) {
+        return productData.removeIf(product -> product.getProductId().equals(productId));
     }
 }

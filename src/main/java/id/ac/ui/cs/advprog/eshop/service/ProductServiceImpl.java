@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     @Override
     public Product save(Product product) {
@@ -30,12 +34,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(String id) {
-        return productRepository.findById(id);
+    public Product findById(String productId) {
+        return productRepository.findById(productId);
     }
 
     @Override
-    public boolean deleteById(String id) {
-        return productRepository.deleteById(id);
+    public boolean deleteById(String productId) {
+        return productRepository.deleteById(productId);
     }
 }
