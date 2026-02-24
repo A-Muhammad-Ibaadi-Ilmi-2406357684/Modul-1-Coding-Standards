@@ -3,6 +3,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Run tests
@@ -21,6 +24,9 @@ jobs:
       - name: Run unit tests
         run: ./gradlew test
   pmd:
+    permissions:
+      contents: read  # for pmd/pmd-github-action to determine modified files
+      pull-requests: read  # for pmd/pmd-github-action to query PRs
     name: Run PMD
     runs-on: ubuntu-latest
     steps:
