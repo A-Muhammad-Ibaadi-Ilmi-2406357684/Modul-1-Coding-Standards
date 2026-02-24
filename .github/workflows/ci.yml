@@ -20,3 +20,19 @@ jobs:
         run: chmod +x gradlew
       - name: Run unit tests
         run: ./gradlew test
+  pmd:
+    name: Run PMD
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Git repository
+        uses: actions/checkout@v4
+      - name: Set up Java toolchain
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: "gradle"
+      - name: Run PMD
+        uses: pmd/pmd-github-action@v2
+        with:
+          rulesets: 'rulesets/hello.xml'
