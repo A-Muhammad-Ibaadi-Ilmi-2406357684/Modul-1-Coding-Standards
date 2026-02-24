@@ -11,5 +11,6 @@
 
    <!-- Your rules will come here -->
     <rule ref="category/java/errorprone.xml/EmptyCatchBlock" />
+    <rule ref="category/java/bestpractices.xml" />
 
 </ruleset>
