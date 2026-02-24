@@ -35,4 +35,5 @@ jobs:
       - name: Run PMD
         uses: pmd/pmd-github-action@v2
         with:
+          sourcePath: 'src/main/java'
           rulesets: 'rulesets/hello.xml'
