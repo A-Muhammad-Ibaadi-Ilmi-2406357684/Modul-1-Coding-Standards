@@ -37,3 +37,4 @@ jobs:
         with:
           sourcePath: 'src/main/java'
           rulesets: 'rulesets/hello.xml'
+          analyzeModifiedFilesOnly: false
