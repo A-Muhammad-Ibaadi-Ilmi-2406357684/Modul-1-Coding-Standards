@@ -14,6 +14,7 @@ Here are the SOLID principles I applied to my project:
   * `CarController` extends `ProductController` by adding controllers for the `Car` model.
 * **Open-closed principle:** The additions demonstrate an example of OCP. `CarController` is defined as a subclass of the existing `ProductController`. It *extends* `ProductController` adds controllers for the Car model and its corresponding views, without *modifying* the existing methods in `ProductController`.
 * **Liskov substitution:** The additions demonstrate an example of LSP. `CarController` is defined as a subclass of the existing `ProductController`. Therefore, we can use a `CarController` anywhere where a `ProductController` is expected.
+* **Interface segregation:** Currently, ISP does not apply in my codebase. The methods defined by the `ProductService` and `CarService` interfaces are too interrelated; it does not make sense for a client to want to implement one or a few methods but not the rest. Defining separate interfaces for each one would be unnecessarily verbose.
 * **Dependency inversion:** I modified `CarController` so that it has a `CarService` attribute instead of a `CarServiceImpl`. The main advantage to applying DIP is that this makes the high-level module (`CarController` in this example) independent of the implementation details of the low-level module (here `CarServiceImpl`).
 
 # Week 2 reflection
