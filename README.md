@@ -6,6 +6,12 @@ Deployment: https://dutch-delphinia-adpro12903i32103erj2-514e71dc.koyeb.app/
 
 Here are the SOLID principles I applied to my project:
 
+* **Single responsibility:** Overall, the codebase demonstrates SRP. Each class is responsible for one thing, and one thing only:
+  * `Product` and `Car` are models for products and cars.
+  * `ProductRepository` and `CarRepository` serves as a storage model for `Product` and `Car` objects.
+  * `ProductService` and `CarService` define methods for manipulating a given repository.
+  * `ProductController` defines controllers for the `Product` model.
+  * `CarController` extends `ProductController` by adding controllers for the `Car` model.
 * **Open-closed principle:** The additions demonstrate an example of OCP. `CarController` is defined as a subclass of the existing `ProductController`. It *extends* `ProductController` adds controllers for the Car model and its corresponding views, without *modifying* the existing methods in `ProductController`.
 * **Liskov substitution:** The additions demonstrate an example of LSP. `CarController` is defined as a subclass of the existing `ProductController`. Therefore, we can use a `CarController` anywhere where a `ProductController` is expected.
 * **Dependency inversion:** I modified `CarController` so that it has a `CarService` attribute instead of a `CarServiceImpl`. The main advantage to applying DIP is that this makes the high-level module (`CarController` in this example) independent of the implementation details of the low-level module (here `CarServiceImpl`).
