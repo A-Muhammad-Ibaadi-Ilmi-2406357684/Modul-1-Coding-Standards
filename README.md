@@ -1,5 +1,13 @@
 Deployment: https://dutch-delphinia-adpro12903i32103erj2-514e71dc.koyeb.app/
 
+(Note: Deployment is occasionally paused to save my money)
+
+# Week 3 reflection
+
+Here are the SOLID principles I applied to my project:
+
+* **Dependency inversion:** I modified `CarController` so that it has a `CarService` attribute instead of a `CarServiceImpl`. The main advantage to applying DIP is that this makes the high-level module (`CarController` in this example) independent of the implementation details of the low-level module (here `CarServiceImpl`).
+
 # Week 2 reflection
 
 ## Code quality issues
