@@ -1,6 +1,6 @@
 Deployment: https://dutch-delphinia-adpro12903i32103erj2-514e71dc.koyeb.app/
 
-(Note: Deployment is occasionally paused to save my money)
+(Note: Currently up; Personally-funded)
 
 # Week 3 reflection
 
