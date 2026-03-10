@@ -132,7 +132,7 @@ public class OrderServiceImplTest {
     @Test
     void testFindAllByAuthorIfAllLowercase() {
         Order order = orders.get(1);
-        doReturn(orders).when(orderRepository)
+        doReturn(new ArrayList<Order>()).when(orderRepository)
                 .findAllByAuthor(order.getAuthor().toLowerCase());
 
         List<Order> results = orderService.findAllByAuthor(
